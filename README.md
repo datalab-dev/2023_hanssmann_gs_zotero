@@ -48,6 +48,29 @@ data/         Data sets (files > 1MB go on Google Drive)
 src/          python code
 ```
 
+## Process Notion CSV Export
+
+“Resource Name” Column is the key. It will be the title in the Zotero database
+
+1. Export data from Notion database as CSV (make note of the date this was done)
+2. Split Structural Framework by comma
+3. Determine Item Type based on Resource Type (primer will have to be collapsed)
+4. Extract Author list from Authors column
+5. Get URL from Links column
+6. Get tags list from Topics Column
+7. Parse out Full Citation to extract (as available):
+   a. Date/Year
+   b. Journal, volume and issue
+   c. Series Name
+   d. Publisher
+   e. Editor
+   f. Location/Place
+8. Create a BibLatex entry for each resource using the data you previously extracted
+   a. Tags should include all of the Resource’s topics as well as “notion”
+   b. Create a list of resources for each Structural Framework
+9. Write a .bib file for each Structural Framework containing the BibLatex entries for each resource in that framework.
+
+
 <!--
 The files in the `data/` directory are:
 
