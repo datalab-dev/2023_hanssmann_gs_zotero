@@ -14,16 +14,17 @@ In the listing of directories, delete anything that isn't relevant to your
 project.
 -->
 
-# COLLABORATOR PROJECT_NAME Project
+# FJHC Gender Studies Zotero Project
 
-This repository contains code for COLLABORATOR's PROJECT_NAME project. The
-project is PROJECT_DESCRIPTION. The goal of our collaboration is PROJECT_GOAL.
+This repository contains code for the Feminist Health Justice Collective's Zotero project. The
+project involves migrating citation data for health resources from a Notion database to a Zotero 
+database for management and storage
 
 Links:
 
 * [Google Drive][google]
 
-[google]: DRIVE_LINK
+[google]: 
 
 ## File and Directory Structure
 
