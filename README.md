@@ -38,6 +38,17 @@ Links:
 [bibtex]: https://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
 
 
+
+## File and Directory Structure
+
+The directory structure for the project is:
+
+```
+README.md
+data/         Data sets (files > 1MB go on Google Drive)
+src/          python code
+```
+
 ## Process Notion CSV Export
 
 “Resource Name” Column is the key. It will be the title in the Zotero database
@@ -60,17 +71,6 @@ Links:
    * Create a list of resources for each Structural Framework
 10. Write a .bib file for each Structural Framework containing the BibLatex entries for each resource in that framework.
 
-
-
-## File and Directory Structure
-
-The directory structure for the project is:
-
-```
-README.md
-data/         Data sets (files > 1MB go on Google Drive)
-src/          python code
-```
 
 <!--
 The files in the `data/` directory are:
