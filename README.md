@@ -28,12 +28,14 @@ Links:
 * [Notion-Zotero Documentation][docs]
 * [Zotero Database][zotero_db]
 * [FHJC Website][fhjc]
+* [BibLatex][bibtex]
 
 [google]: https://drive.google.com/drive/folders/1M7pJgameInSk76bCYVXtMFXs0orcbB0N
 [meeting]: https://docs.google.com/document/d/1pKjNsDqv-b0AZuQaIt6QKViyeDv0skGOBL2rFsALok0
 [docs]: https://docs.google.com/document/d/1_DqvkqctqpUFcQPRD5KfqOlEobT_hj-m-mGbFdALN9o
 [zotero_db]: https://www.zotero.org/groups/5178293/feministhealthjusticecollective/library
 [fhjc]: https://www.feministhealthjustice.com/
+[bibtex]: https://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
 
 
 ## File and Directory Structure
