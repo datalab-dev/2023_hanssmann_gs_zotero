@@ -18,7 +18,8 @@ project.
 
 This repository contains code for the Feminist Health Justice Collective's Zotero project. The
 project involves migrating citation data for health resources from a Notion database to a Zotero 
-database for management and storage
+database for management and storage. Once this is complete, FHJC will be able to add data to their
+database using Zotero's browser plugins, and will have an easy way to export their data for backup.
 
 Links:
 
