@@ -49,15 +49,15 @@ Links:
 5. Get URL from Links column
 6. Get tags list from Topics Column
 7. Parse out Full Citation to extract (as available):
-    a. Date and Year
-    a. Journal, volume and issue
-    c. Series Name
-    d. Publisher
-    e. Editor
-    f. Location/Place
+    * Date and Year
+    * Journal, volume and issue
+    * Series Name
+    * Publisher
+    * Editor
+    * Location/Place
 9. Create a BibLatex entry for each resource using the data you previously extracted
-   a. Tags should include all of the Resource’s topics as well as “notion”
-   b. Create a list of resources for each Structural Framework
+   * Tags should include all of the Resource’s topics as well as “notion”
+   * Create a list of resources for each Structural Framework
 10. Write a .bib file for each Structural Framework containing the BibLatex entries for each resource in that framework.
 
 
