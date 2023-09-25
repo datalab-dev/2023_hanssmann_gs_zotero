@@ -16,10 +16,13 @@ project.
 
 # FJHC Gender Studies Zotero Project
 
-This repository contains code for the Feminist Health Justice Collective's Zotero project. The
-project involves migrating citation data for health resources from a Notion database to a Zotero 
-database for management and storage. Once this is complete, FHJC will be able to add data to their
-database using Zotero's browser plugins, and will have an easy way to export their data for backup.
+This repository contains code for the Feminist Health Justice Collective's 
+Zotero project. The project involves migrating citation data for health 
+resources from a Notion database to a Zotero database for management and storage.
+Once this is complete, FHJC will be able to add data to their database using 
+Zotero's browser plugins, and will have an easy way to export their data for 
+backup. Then the [Notero Plugin][notero] will be used to port the data into 
+a Notion database, which will connect to the FHJC website.
 
 Links:
 
@@ -29,6 +32,7 @@ Links:
 * [Zotero Database][zotero_db]
 * [FHJC Website][fhjc]
 * [BibLatex][bibtex]
+* [Notero Plugin][notero]
 
 [google]: https://drive.google.com/drive/folders/1M7pJgameInSk76bCYVXtMFXs0orcbB0N
 [meeting]: https://docs.google.com/document/d/1pKjNsDqv-b0AZuQaIt6QKViyeDv0skGOBL2rFsALok0
@@ -36,6 +40,7 @@ Links:
 [zotero_db]: https://www.zotero.org/groups/5178293/feministhealthjusticecollective/library
 [fhjc]: https://www.feministhealthjustice.com/
 [bibtex]: https://mirrors.ibiblio.org/CTAN/macros/latex/contrib/biblatex/doc/biblatex.pdf
+[notero]: https://github.com/dvanoni/notero
 
 
 
