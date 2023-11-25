@@ -40,7 +40,6 @@ def create_bib():
         print(f"An error occurred while reading the file: {e}")
         return
     
-    data['Tags'] = "notion" + ", " + data['Tags']
     df = data
     #Rename the columns from Notion
     df.rename(columns={
@@ -55,6 +54,7 @@ def create_bib():
         'Full Citation':'In-Text Citation' 
     }, inplace=True)
 
+    df['Tags'] = "notion" + ", " + df['Tags']
     df['Collections'] = df['Collections'].str.split(', ').tolist()
     df['Name'] = df['Name'].str.replace('“', '"').str.replace('”', '"').str.replace('’','\'').str.replace('—','-')
     df['Authors'] = df['Authors'].str.replace('&','and').str.replace('�and�','and')
