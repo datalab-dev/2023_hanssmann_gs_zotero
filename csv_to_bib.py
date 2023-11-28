@@ -8,6 +8,26 @@ def extract_year(citation):
     matches = re.findall(r'\((\d{4})\)', citation)
     return matches[0] if matches else ""
 
+def format_title(row):
+    if row['Resource Type'] != 'podcast':
+        return row.Name
+    else:
+        if 'Podcast' in row.Authors:
+            new_title = row.Authors.split(' Podcast')[0] + ': ' + row.Name
+
+            if 'WhaZhaZi' in row.Authors:
+                new_title = new_title + " with Thosh Collins (WhaZhaZi, Haudenosaunee and O'otham) and Chelsea Luger (Anishinaabe and Lakota)."
+
+        elif 'podcast' in row.Authors: 
+            new_title = row.Authors.split(' podcast')[0] + ': ' + row.Name
+        elif 'Adriana Alejandre' in row.Authors:
+            new_title = 'Latinx Therapy: ' + row.Name
+        else:
+            new_title = row.Name
+
+        return new_title
+
+
 def generate_bibtex_key(author, title, citation):
     if pd.isnull(author) and pd.isnull(title):
         return "unknown"
@@ -56,9 +76,13 @@ def create_bib():
 
     df['Tags'] = "notion" + ", " + df['Tags']
     df['Collections'] = df['Collections'].str.split(', ').tolist()
+
     df['Name'] = df['Name'].str.replace('“', '"').str.replace('”', '"').str.replace('’','\'').str.replace('—','-')
+    df['Name'] = df['Name'].apply(format_title, axis=1)
+    
     df['Authors'] = df['Authors'].str.replace('&','and').str.replace('�and�','and')
     df['Authors'] = df['Authors'].str.replace(', ', ' and ')
+
 
     # Mapping the Resource Type to BibTeX entry type
     resource_type_mapping = {
@@ -104,4 +128,5 @@ def create_bib():
             file.write(bibtex_output)
 
 # Call the function
+# /Users/echellwig/Research/Datalab/2023_hanssmann_gs_zotero/data/FHJCDatabaseShared.csv
 create_bib()
