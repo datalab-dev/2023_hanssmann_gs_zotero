@@ -19,7 +19,8 @@ def format_title(row):
                 new_title = new_title + " with Thosh Collins (WhaZhaZi, Haudenosaunee and O'otham) and Chelsea Luger (Anishinaabe and Lakota)."
 
         elif 'podcast' in row.Authors: 
-            new_title = row.Authors.split(' podcast')[0] + ': ' + row.Name
+            new_subtitle = row.Name.split('Episode')[1]
+            new_title = row.Authors.split(' podcast')[0] + new_subtitle
         elif 'Adriana Alejandre' in row.Authors:
             new_title = 'Latinx Therapy: ' + row.Name
         else:
