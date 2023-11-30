@@ -1,6 +1,19 @@
 import pandas as pd
 import re
 import os
+import numpy as np
+
+def flatten_list(nested):
+  flat = []
+
+  for l in nested:
+    if isinstance(l, list):
+        flat.extend(l)
+    else:
+        flat.append(l)
+    
+  return(flat)
+
 
 def extract_year(citation):
     if pd.isnull(citation):
@@ -29,6 +42,27 @@ def format_title(row):
         return new_title
 
 
+def format_authors(row, orgs):
+
+    authors =  row['Authors']
+
+    if row['Resource Type'] != 'podcast':
+        
+        if authors not in orgs:
+            authors = authors.replace(', LMFT', '')
+            authors = authors.replace('&','and').replace('�and�','and')
+            authors = authors.replace(', and ', ' and ')
+            authors = authors.replace(', ', ' and ')
+
+    else:
+       authors = authors.replace(' podcast', '').replace(', LMFT', '')
+
+       if 'All My Relations' in authors:
+           authors = 'Wilbur, Matika and Keene, Adrienne'
+
+    
+    return authors 
+
 def generate_bibtex_key(author, title, citation):
     if pd.isnull(author) and pd.isnull(title):
         return "unknown"
@@ -42,16 +76,37 @@ def generate_bibtex_key(author, title, citation):
 
 def format_bibtex(entry):
     author_value = "" if pd.isna(entry['author']) else entry['author']
-    return f"{entry['entry_type']}{{{entry['entry_key']},\n" \
-           f"    title = {{{entry['title']}}},\n" \
-           f"    author = {{{author_value}}},\n" \
-           f"    url = {{{entry['url']}}},\n" \
-           f"    keywords = {{{entry['keywords']}}},\n" \
-           f"    date = {{{entry['date']}}},\n" \
-           f"    urldate = {{{entry['urldate']}}}\n" \
+
+    if entry['is_org']:
+        bibtex_item = f"{entry['entry_type']}{{{entry['entry_key']},\n" \
+           f"    title = { {{entry['title']}} },\n" \
+           f"    author = { {{ {{author_value}} }} },\n" \
+           f"    url = { {{entry['url']}} },\n" \
+           f"    keywords = { {{entry['keywords']}} },\n" \
+           f"    date = { {{entry['date']}} },\n" \
+           f"    urldate = { {{entry['urldate']}} }\n" \
+           f"}}\n\n"
+        
+    else:
+        bibtex_item = f"{entry['entry_type']}{{{entry['entry_key']},\n" \
+           f"    title = { {{entry['title']}} },\n" \
+           f"    author = { {{author_value}} },\n" \
+           f"    url = { {{entry['url']}} },\n" \
+           f"    keywords = { {{entry['keywords']}} },\n" \
+           f"    date = { {{entry['date']}} },\n" \
+           f"    urldate = { {{entry['urldate']}} }\n" \
            f"}}\n\n"
 
+    return bibtex_item
+
 def create_bib():
+    orgs = ['Sins Invalid', 'Anti-Eviction Mapping Project (AEMP)', 
+            'We the Unhoused', 'National Partnership for Women and Families',
+            'National Harm Reduction Coalition', 'The Drug Policy Alliance',
+            'Addressing Racism Review Summary Report',
+            'Reflections: A Journal of Community-Engaged Writing & Rhetoric']
+
+
     # Ask the user for the input file path
     csvfile = input("Please enter the input CSV file path: ")
     
@@ -81,9 +136,9 @@ def create_bib():
     df['Name'] = df['Name'].str.replace('“', '"').str.replace('”', '"').str.replace('’','\'').str.replace('—','-')
     df['Name'] = df['Name'].apply(format_title, axis=1)
     
-    df['Authors'] = df['Authors'].str.replace('&','and').str.replace('�and�','and')
-    df['Authors'] = df['Authors'].str.replace(', ', ' and ')
+    df['Authors'] = df['Authors'].apply(format_authors, axis=1, args=(orgs))
 
+    df['is_org'] = np.where(df['Authors'] in orgs, True, False)
 
     # Mapping the Resource Type to BibTeX entry type
     resource_type_mapping = {
@@ -117,7 +172,8 @@ def create_bib():
                 "url": row['URL'],
                 "keywords": row['Tags'],
                 "date": extract_year(row['In-Text Citation']),
-                "urldate": "2023-09-06"  # Current date or use datetime module to get current date
+                "urldate": "2023-09-06",  # Current date or use datetime module to get current date
+                "is_org":  row['is_org']
             }
             bibtex_entries.append(entry)
 
