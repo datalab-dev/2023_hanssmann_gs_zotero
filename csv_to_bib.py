@@ -99,13 +99,7 @@ def format_bibtex(entry):
 
     return bibtex_item
 
-def create_bib():
-    orgs = ['Sins Invalid', 'Anti-Eviction Mapping Project (AEMP)', 
-            'We the Unhoused', 'National Partnership for Women and Families',
-            'National Harm Reduction Coalition', 'The Drug Policy Alliance',
-            'Addressing Racism Review Summary Report',
-            'Reflections: A Journal of Community-Engaged Writing & Rhetoric']
-
+def create_bib(organizations):
 
     # Ask the user for the input file path
     csvfile = input("Please enter the input CSV file path: ")
@@ -185,5 +179,14 @@ def create_bib():
             file.write(bibtex_output)
 
 # Call the function
-# /Users/echellwig/Research/Datalab/2023_hanssmann_gs_zotero/data/FHJCDatabaseShared.csv
-create_bib()
+# data/FHJCDatabaseShared.csv
+
+# Authors with a name that does not fall into the First Name Last Name pattern.
+# They don't have to be an organization but most of them are.
+orgs = ['Sins Invalid', 'Anti-Eviction Mapping Project (AEMP)', 
+        'We the Unhoused', 'National Partnership for Women and Families',
+        'National Harm Reduction Coalition', 'The Drug Policy Alliance',
+        'Addressing Racism Review Summary Report',
+        'Reflections: A Journal of Community-Engaged Writing & Rhetoric']
+
+create_bib(orgs)
