@@ -82,23 +82,23 @@ def format_bibtex(entry):
 
     if entry['is_org']:
         bibtex_item = f"{entry['entry_type']}{{{entry['entry_key']},\n" \
-           f"    title = { {{entry['title']}} },\n" \
-           f"    author = { {{ {{author_value}} }} },\n" \
-           f"    url = { {{entry['url']}} },\n" \
-           f"    keywords = { {{entry['keywords']}} },\n" \
-           f"    date = { {{entry['date']}} },\n" \
-           f"    urldate = { {{entry['urldate']}} }\n" \
+           f"    title = {{{entry['title']}}},\n" \
+           f"    author = {{{{{author_value}}}}},\n" \
+           f"    url = {{{entry['url']}}},\n" \
+           f"    keywords = {{{entry['keywords']}}},\n" \
+           f"    date = {{{entry['date']}}},\n" \
+           f"    urldate = {{{entry['urldate']}}}\n" \
            f"}}\n\n"
         
     else:
         bibtex_item = f"{entry['entry_type']}{{{entry['entry_key']},\n" \
-           f"    title = { {{entry['title']}} },\n" \
-           f"    author = { {{author_value}} },\n" \
-           f"    url = { {{entry['url']}} },\n" \
-           f"    keywords = { {{entry['keywords']}} },\n" \
-           f"    date = { {{entry['date']}} },\n" \
-           f"    urldate = { {{entry['urldate']}} }\n" \
-           f"}}\n\n"
+           f"    title = {{{entry['title']}}},\n" \
+           f"    author = {{{author_value}}},\n"  \
+           f"    url = {{{entry['url']}}},\n" \
+           f"    keywords = {{{entry['keywords']}}},\n" \
+           f"    date = {{{entry['date']}}},\n" \
+           f"    urldate = {{{entry['urldate']}}}\n" \
+           f"}}\n\n" 
 
     return bibtex_item
 
