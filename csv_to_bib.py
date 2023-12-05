@@ -133,9 +133,9 @@ def create_bib(organizations):
     df['Name'] = df['Name'].str.replace('“', '"').str.replace('”', '"').str.replace('’','\'').str.replace('—','-')
     df['Name'] = df.apply(format_title, axis=1)
     
-    df['Authors'] = df['Authors'].apply(format_authors, axis=1, args=(orgs))
+    df['Authors'] = df.apply(format_authors, axis=1, args=([organizations]))
 
-    df['is_org'] = np.where(df['Authors'] in orgs, True, False)
+    df['is_org'] =df['Authors'].isin(organizations)
 
     # Mapping the Resource Type to BibTeX entry type
     resource_type_mapping = {
