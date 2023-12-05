@@ -22,7 +22,7 @@ def extract_year(citation):
     return matches[0] if matches else ""
 
 def format_title(row):
-    if row['Resource Type'] != 'podcast':
+    if row['Item Type'] != 'podcast':
         return row.Name
     else:
         if 'Podcast' in row.Authors:
@@ -46,7 +46,10 @@ def format_authors(row, orgs):
 
     authors =  row['Authors']
 
-    if row['Resource Type'] != 'podcast':
+    if pd.isna(authors):
+        return(authors)
+
+    elif row['Item Type'] != 'podcast':
         
         if authors not in orgs:
             authors = authors.replace(', LMFT', '')
