@@ -131,7 +131,7 @@ def create_bib(organizations):
     df['Collections'] = df['Collections'].str.split(', ').tolist()
 
     df['Name'] = df['Name'].str.replace('“', '"').str.replace('”', '"').str.replace('’','\'').str.replace('—','-')
-    df['Name'] = df['Name'].apply(format_title, axis=1)
+    df['Name'] = df.apply(format_title, axis=1)
     
     df['Authors'] = df['Authors'].apply(format_authors, axis=1, args=(orgs))
 
