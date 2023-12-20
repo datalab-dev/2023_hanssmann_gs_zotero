@@ -24,6 +24,15 @@ Zotero's browser plugins, and will have an easy way to export their data for
 backup. Then the [Notero Plugin][notero] will be used to port the data into 
 a Notion database, which will connect to the FHJC website.
 
+Because some of the resources (particularly the podcasts) required significant
+reformatting to be compatible with bibtex syntax, rerunning this code as is at
+a later date will most likely not work, especially if more podcasts have been
+added. If you need to redo the data-crosswalk for some reason, the two functions
+that will require the most changes to work properly are `format_title()` and
+`format_authors()`. There may be others but those were the ones that caused the 
+most issues originally. Additionally, there is a list of all the organizations
+used as authors in the database that will also need to be updated (line 189).
+
 Links:
 
 * [Google Drive][google]
@@ -56,7 +65,7 @@ src/          python code
 
 ## Process Notion CSV Export
 
-“Resource Name” Column is the key. It will be the title in the Zotero database
+“Resource Name” Column is the key. It will be the title in the Zotero database.
 
 1. Export data from Notion database as CSV (make note of the date this was done)
 2. Split Structural Framework by comma
@@ -74,7 +83,8 @@ src/          python code
 9. Create a BibLatex entry for each resource using the data you previously extracted
    * Tags should include all of the Resource’s topics as well as “notion”
    * Create a list of resources for each Structural Framework
-10. Write a .bib file for each Structural Framework containing the BibLatex entries for each resource in that framework.
+10. Write a .bib file for each Structural Framework containing the BibLatex 
+entries for each resource in that framework.
 
 
 <!--
